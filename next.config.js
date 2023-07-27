@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+    "buildCommand": "pnpm run build"
 }
 
 module.exports = nextConfig
