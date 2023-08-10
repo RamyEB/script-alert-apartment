@@ -1,0 +1,29 @@
+{
+  "enterprise": false,
+  "price": { "min": null, "max": 1200 },
+  "projects": [1],
+  "surface": { "min": 30, "max": null },
+  "types": [1],
+  "rooms": [1, 2, 3, 4, 5],
+  "places": [
+    { "inseeCodes": [750108] },
+    { "inseeCodes": [750111] },
+    { "inseeCodes": [750112] },
+    { "inseeCodes": [750113] },
+    { "inseeCodes": [750114] },
+    { "inseeCodes": [750117] },
+    { "inseeCodes": [750120] },
+    { "inseeCodes": [920044] },
+    { "inseeCodes": [920049] },
+    { "inseeCodes": [930045] },
+    { "inseeCodes": [940018] },
+    { "inseeCodes": [940067] },
+    { "inseeCodes": [940080] },
+    { "districts": [133148] },
+    { "inseeCodes": [750104] },
+    { "inseeCodes": [750105] },
+    { "inseeCodes": [750109] }
+  ],
+  "textCriteria": [],
+  "mandatoryCommodities": true
+}
