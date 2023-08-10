@@ -1,6 +1,8 @@
 name: Call API Every 5 Minutes
 
 on:
+  push:
+  workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
 
@@ -13,4 +15,6 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Call API
-      run: curl -X GET https://script-search-appartement-seloger.vercel.app/api/checkNewApartment
+      run: |
+        response=$(curl -s -X GET https://script-search-appartement-seloger.vercel.app/api/checkNewApartment)
+        echo "API Response: $response"
