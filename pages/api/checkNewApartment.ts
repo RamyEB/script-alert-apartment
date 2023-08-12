@@ -1,6 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { postData } from "@/functions/postData";
-import { Data } from "@/types";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import nbApartment from "../../data/nbApartment.json";
@@ -18,7 +17,7 @@ const url = process.env.URL;
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<any>
 ) {
   try {
     const response = await postData(SELOGER_URL, filter);
@@ -33,7 +32,7 @@ export default async function handler(
         );
       nbApartment.lastCount = response.nb;
     }
-    res.json({ message: "Good!" });
+    res.json({ message: "Good!", nbApartment, response });
   } catch (err) {
     res.json({ error: "failed to load data" });
   }
