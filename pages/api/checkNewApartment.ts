@@ -34,7 +34,7 @@ export default async function handler(
     }
     if (req.query.reset) nbApartment.lastCount = 0;
     res.status(200).json({ message: "Good!", nbApartment, response });
-  } catch (err) {
-    res.json({ error: "failed to load data" });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
   }
 }

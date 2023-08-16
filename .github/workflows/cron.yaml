@@ -16,5 +16,5 @@ jobs:
       
     - name: Call API
       run: |
-        response=$(curl -s -X GET https://script-search-appartement-seloger.vercel.app/api/checkNewApartment)
+        response=$(curl -s -X GET https://script-search-appartement-seloger.vercel.app/api/checkNewApartment )
         echo "API Response: $response"

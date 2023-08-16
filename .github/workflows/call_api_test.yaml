@@ -1,4 +1,4 @@
-name: Call API Every 5 Minutes
+name: Call API TEST
 
 on:
   workflow_dispatch:
@@ -13,5 +13,5 @@ jobs:
       
     - name: Call API
       run: |
-        response=$(curl -s -X GET https://script-search-appartement-seloger.vercel.app/api/checkNewApartment?dev=1)
+        response=$(curl -s -X GET https://script-search-appartement-seloger.vercel.app/api/checkNewApartment?dev=1 )
         echo "API Response: $response"
