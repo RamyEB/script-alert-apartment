@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import nbApartment from "../../data/nbApartment.json";
 import filter from "../../data/filter.json";
-import pushNotification from "@/functions/pushNotification";
+import pushNotification from "../../functions/pushNotification";
 
 const { NTFY_URL, SELOGER_URL } = process.env;
 
