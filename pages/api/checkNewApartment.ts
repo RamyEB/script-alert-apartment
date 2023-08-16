@@ -17,14 +17,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  console.log("keys", {
-    NTFY_URL,
-    SELOGER_URL,
-    SECRET_CHANNEL,
-  });
-  const resp = await fetch(
-    `${NTFY_URL}${SECRET_CHANNEL}`,
-    pushNotification({ nb: "test" }, nbApartment)
-  );
+  console.log("good");
   res.json({ message: "Good" });
 }
