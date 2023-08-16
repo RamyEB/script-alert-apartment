@@ -42,6 +42,7 @@ export default async function handler(
       nbApartment.lastCount = response.nb;
     }
     res.json({ message: "Good!", nbApartment, response });*/
+    res.json({ message: "Good" });
   } catch (err: any) {
     throw new Error(err.message);
   }
