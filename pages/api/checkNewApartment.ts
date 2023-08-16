@@ -13,18 +13,18 @@ const SECRET_CHANNEL =
     ? process.env.SECRET_CHANNEL
     : process.env.SECRET_CHANNEL_DEV;
 
-const url = process.env.URL;
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
   try {
     const response = await postData(SELOGER_URL, filter);
+    console.log("seloger_call");
     await fetch(
       `${NTFY_URL}${SECRET_CHANNEL}`,
       pushNotification(response, nbApartment)
     );
+    console.log("ntfy1");
     if (req.query.reset) {
       nbApartment.lastCount = 0;
     } else if (nbApartment.lastCount !== response.nb) {
@@ -33,6 +33,7 @@ export default async function handler(
           `${NTFY_URL}${SECRET_CHANNEL}`,
           pushNotification(response, nbApartment)
         );
+        console.log("ntfy2");
       }
       nbApartment.lastCount = response.nb;
     }
