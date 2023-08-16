@@ -17,12 +17,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  await fetch(
+    `${NTFY_URL}${SECRET_CHANNEL}`,
+    pushNotification({ nb: "test" }, nbApartment)
+  );
   try {
     //const response = await postData(SELOGER_URL, filter);
-    await fetch(
-      `${NTFY_URL}${SECRET_CHANNEL}`,
-      pushNotification({ nb: "test" }, nbApartment)
-    );
     /*if (req.query.reset) {
       nbApartment.lastCount = 0;
     } else if (nbApartment.lastCount !== response.nb) {
