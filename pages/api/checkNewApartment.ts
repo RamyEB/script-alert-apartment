@@ -18,14 +18,12 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   try {
-    const response = await postData(SELOGER_URL, filter);
-    /* console.log("seloger_call");
+    //const response = await postData(SELOGER_URL, filter);
     await fetch(
       `${NTFY_URL}${SECRET_CHANNEL}`,
-      pushNotification(response, nbApartment)
+      pushNotification({ nb: "test" }, nbApartment)
     );
-    console.log("ntfy1");
-    if (req.query.reset) {
+    /*if (req.query.reset) {
       nbApartment.lastCount = 0;
     } else if (nbApartment.lastCount !== response.nb) {
       if (nbApartment.lastCount < response.nb && nbApartment.lastCount !== 0) {
@@ -36,8 +34,8 @@ export default async function handler(
         console.log("ntfy2");
       }
       nbApartment.lastCount = response.nb;
-    }*/
-    res.json({ message: "Good!", nbApartment, response });
+    }
+    res.json({ message: "Good!", nbApartment, response });*/
   } catch (err: any) {
     throw new Error(err.message);
   }
