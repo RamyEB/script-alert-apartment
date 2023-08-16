@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import nbApartment from "../../data/nbApartment.json";
 import filter from "../../data/filter.json";
-import pushNotification from "../../functions/pushNotification";
+import pushNotification from "@/functions/pushNotification";
 
 const { NTFY_URL, SELOGER_URL } = process.env;
 
@@ -17,6 +17,25 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  console.log("good");
-  res.json({ message: "Good" });
+  try {
+    const response = await postData(SELOGER_URL, filter);
+    await fetch(
+      `${NTFY_URL}${SECRET_CHANNEL}`,
+      pushNotification(response, nbApartment)
+    );
+    if (req.query.reset) {
+      nbApartment.lastCount = 0;
+    } else if (nbApartment.lastCount !== response.nb) {
+      if (nbApartment.lastCount < response.nb && nbApartment.lastCount !== 0) {
+        await fetch(
+          `${NTFY_URL}${SECRET_CHANNEL}`,
+          pushNotification(response, nbApartment)
+        );
+      }
+      nbApartment.lastCount = response.nb;
+    }
+    res.json({ message: "Good!", nbApartment, response });
+  } catch (err: any) {
+    throw new Error(err.message);
+  }
 }
