@@ -25,7 +25,10 @@ export default async function handler(
     if (req.query.reset) {
       nbApartment.lastCount = 0;
     } else if (nbApartment.lastCount !== response.nb) {
-      if (nbApartment.lastCount < response.nb && nbApartment.lastCount !== 0)
+      if (
+        req.query.dev ||
+        (nbApartment.lastCount < response.nb && nbApartment.lastCount !== 0)
+      )
         await fetch(
           `${NTFY_URL}${SECRET_CHANNEL}`,
           pushNotification(response, nbApartment)
