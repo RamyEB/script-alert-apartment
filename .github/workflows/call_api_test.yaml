@@ -1,0 +1,17 @@
+name: Call API Every 5 Minutes
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-api:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
+    - name: Call API
+      run: |
+        response=$(curl -s -X GET https://script-search-appartement-seloger.vercel.app/api/checkNewApartment?dev=1)
+        echo "API Response: $response"
