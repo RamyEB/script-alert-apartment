@@ -1,10 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { postData } from "@/functions/postData";
-import type { NextApiRequest, NextApiResponse } from "next";
-
+import { postData } from "../../functions/postData";
 import nbApartment from "../../data/nbApartment.json";
 import filter from "../../data/filter.json";
-import pushNotification from "@/functions/pushNotification";
+import pushNotification from "../../functions/pushNotification";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const { NTFY_URL, SELOGER_URL } = process.env;
 
