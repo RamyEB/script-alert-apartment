@@ -19,7 +19,7 @@ export default async function handler(
 ) {
   try {
     const response = await postData(SELOGER_URL, filter);
-    console.log("seloger_call");
+    /* console.log("seloger_call");
     await fetch(
       `${NTFY_URL}${SECRET_CHANNEL}`,
       pushNotification(response, nbApartment)
@@ -36,7 +36,7 @@ export default async function handler(
         console.log("ntfy2");
       }
       nbApartment.lastCount = response.nb;
-    }
+    }*/
     res.json({ message: "Good!", nbApartment, response });
   } catch (err: any) {
     throw new Error(err.message);
