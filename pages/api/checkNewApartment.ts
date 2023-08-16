@@ -17,10 +17,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  await fetch(
+  console.log("keys", {
+    NTFY_URL,
+    SELOGER_URL,
+    SECRET_CHANNEL,
+  });
+  const resp = await fetch(
     `${NTFY_URL}${SECRET_CHANNEL}`,
     pushNotification({ nb: "test" }, nbApartment)
   );
+  console.log(resp);
   try {
     //const response = await postData(SELOGER_URL, filter);
     /*if (req.query.reset) {
