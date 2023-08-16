@@ -22,14 +22,12 @@ export default async function handler(
   try {
     const response = await postData(SELOGER_URL, filter);
 
-    if (
-      req.query.dev ||
-      (nbApartment.lastCount < response.nb && nbApartment.lastCount !== 0)
-    ) {
-      await fetch(
-        `${NTFY_URL}${SECRET_CHANNEL}`,
-        pushNotification(response, nbApartment)
-      );
+    if (req.query.dev || nbApartment.lastCount < response.nb) {
+      if (nbApartment.lastCount !== 0)
+        await fetch(
+          `${NTFY_URL}${SECRET_CHANNEL}`,
+          pushNotification(response, nbApartment)
+        );
       nbApartment.lastCount = response.nb;
     }
     if (req.query.reset) nbApartment.lastCount = 0;
